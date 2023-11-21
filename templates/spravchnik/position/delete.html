@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container p-2">
+        <form method="post">
+            {% csrf_token %}
+            <p>Are you sure want to delete "{{ position.name }}"</p>
+            <p>This action can't be undone</p>
+            <a href="{% url 'position' %}" class="btn btn-secondary">Back</a>
+            <input type="submit" class="btn btn-danger" value="Confirm">
+        </form>
+    </div>
+
+{% endblock %}

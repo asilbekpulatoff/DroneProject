@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Brand
+{% endblock %}
+
+{% block style %}
+    <style>
+        a {
+            text-decoration: none;
+        }
+    </style>
+{% endblock %}
+
+
+{% block content %}
+
+
+
+    <div class="container p-2">
+        <a href="{% url "create_brand" %}" class="btn btn-success mb-2">Add</a>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">
+                    Name
+                    <a href="{% url 'brand' %}?order=desc"><i class="bi bi-arrow-down"></i></a>
+                    <a href="{% url 'brand' %}?order=asc"><i class="bi bi-arrow-up"></i></a>
+                </th>
+                <th scope="col">Operation</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% if brand_filter %}
+                {% for brand in brand_filter %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ brand.name }}</td>
+                        <td>
+                            <a href="{% url 'update_brand' brand.id %}" class="btn btn-info">Update</a>
+                            <a href="{% url "delete_brand" brand.id %}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                {% for brand in brands %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td><a href="{% url 'detail_brand' brand.id %}">{{ brand.name }}</a></td>
+                        <td>
+                            <a href="{% url 'update_brand' brand.id %}" class="btn btn-info">Update</a>
+                            <a href="{% url "delete_brand" brand.id %}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+            {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

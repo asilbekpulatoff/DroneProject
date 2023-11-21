@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Country
+{% endblock %}
+
+{% block style %}
+    <style>
+        a {
+            text-decoration: none;
+        }
+    </style>
+{% endblock %}
+
+
+{% block content %}
+
+
+
+    <div class="container p-2">
+        <a href="{% url "create_country" %}" class="btn btn-success mb-2">Add</a>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">
+                    Name
+                    <a href="{% url 'country' %}?order=desc"><i class="bi bi-arrow-down"></i></a>
+                    <a href="{% url 'country' %}?order=asc"><i class="bi bi-arrow-up"></i></a>
+                </th>
+                <th scope="col">Operation</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% if country_filter %}
+                {% for country in country_filter %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ country.name }}</td>
+                        <td>
+                            <a href="{% url 'update_country' country.id %}" class="btn btn-info">Update</a>
+                            <a href="{% url "delete_country" country.id %}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                {% for country in countries %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td><a href="{% url 'detail_country' country.id %}">{{ country.name }}</a></td>
+                        <td>
+                            <a href="{% url 'update_country' country.id %}" class="btn btn-info">Update</a>
+                            <a href="{% url "delete_country" country.id %}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+            {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Position
+{% endblock %}
+
+{% block style %}
+    <style>
+        a {
+            text-decoration: none;
+        }
+    </style>
+{% endblock %}
+
+
+{% block content %}
+
+
+
+    <div class="container p-2">
+        <a href="{% url "create_position" %}" class="btn btn-success mb-2">Add</a>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">
+                    Name
+                    <a href="{% url 'position' %}?order=desc"><i class="bi bi-arrow-down"></i></a>
+                    <a href="{% url 'position' %}?order=asc"><i class="bi bi-arrow-up"></i></a>
+                </th>
+                <th scope="col">Operation</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% if position_filter %}
+                {% for position in position_filter %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ position.name }}</td>
+                        <td>
+                            <a href="{% url 'update_position' position.id %}" class="btn btn-info">Update</a>
+                            <a href="{% url "delete_position" position.id %}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                {% for position in positions %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td><a href="{% url 'detail_position' position.id %}">{{ position.name }}</a></td>
+                        <td>
+                            <a href="{% url 'update_position' position.id %}" class="btn btn-info">Update</a>
+                            <a href="{% url "delete_position" position.id %}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+            {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
