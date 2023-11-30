@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container p-2">
+        <p>sensor sensor id: {{ sensor.sensor_id }}</p>
+        <p>sensor name: {{sensor.name }}</p>
+        <p>sensor model: {{ sensor.model }}</p>
+        <p>sensor production_year: {{ sensor.production_year }}</p>
+        <p>sensor manufacturer: {{ sensor.manufacturer }}</p>
+        <p>sensor condition: {{ sensor.condition }}</p>
+        <p>sensor status: {{ sensor.status }}</p>
+        <p>sensor type host: {{ sensor.type_host }}</p>
+        <p>sensor host id: {{ sensor.host_id }}</p>
+    </div>
+{% endblock %}

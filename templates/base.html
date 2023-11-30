@@ -23,19 +23,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Drone</a>
+                    <a class="nav-link active" aria-current="page" href="{% url "drone" %}">Drone</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Sensor</a>
+                    <a class="nav-link" href="{% url "sensor" %}">Sensor</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Object</a>
+                    <a class="nav-link" href="{% url "object" %}">Object</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Organization</a>
+                    <a class="nav-link" href="{% url "organization" %}">Organization</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Employee</a>
+                    <a class="nav-link" href="{% url "employee" %}">Employee</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="" role="button" data-bs-toggle="dropdown"
@@ -50,6 +50,8 @@
                         <li><a class="dropdown-item" href="{% url 'region' %}">Region</a></li>
                         <li><a class="dropdown-item" href="{% url "district" %}">District</a></li>
                         <li><a class="dropdown-item" href="{% url "position" %}">Position</a></li>
+                        <li><a class="dropdown-item" href="{% url "sensortype" %}">Sensortype</a></li>
+
                     </ul>
                 </li>
             </ul>

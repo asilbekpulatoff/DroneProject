@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container p-2">
+        <p>Organization name: {{ organization.name }}</p>
+        <p>Organization category: {{ organization.category }}</p>
+        <p>Organization level: {{ organization.level }}</p>
+        <p>Organization district: {{ organization.district }}</p>
+    </div>
+{% endblock %}

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-	District
+	Sensor
 {% endblock %}
 
 {% block style %}
@@ -18,40 +18,40 @@
 
 
     <div class="container p-2">
-        <a href="{% url "create_district" %}" class="btn btn-success mb-2">Add</a>
+        <a href="{% url "create_sensor" %}" class="btn btn-success mb-2">Add</a>
         <table class="table table-bordered">
             <thead>
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">
                     Name
-                    <a href="{% url 'district' %}?order=desc"><i class="bi bi-arrow-down"></i></a>
-                    <a href="{% url 'district' %}?order=asc"><i class="bi bi-arrow-up"></i></a>
+                    <a href="{% url 'sensor' %}?order=desc"><i class="bi bi-arrow-down"></i></a>
+                    <a href="{% url 'sensor' %}?order=asc"><i class="bi bi-arrow-up"></i></a>
                 </th>
                 <th scope="col">Operation</th>
             </tr>
             </thead>
             <tbody>
 
-            {% if district_filter %}
-                {% for district in district_filter %}
+            {% if sensor_filter %}
+                {% for drone in sensor_filter %}
                     <tr>
                         <th scope="row">{{ forloop.counter }}</th>
-                        <td>{{ district.name }}</td>
+                        <td>{{ sensor.name }}</td>
                         <td>
-                            <a href="{% url 'update_district' district.id %}" class="btn btn-info">Update</a>
-                            <a href="{% url "delete_district" district.id %}" class="btn btn-danger">Delete</a>
+                            <a href="{% url 'update_sensor' sensor.id %}" class="btn btn-info">Update</a>
+                            <a href="{% url "delete_sensor" sensor.id %}" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                 {% endfor %}
             {% else %}
-                {% for district in districts %}
+                {% for sensor in sensors %}
                     <tr>
                         <th scope="row">{{ forloop.counter }}</th>
-                        <td><a href="{% url 'detail_district' district.id %}">{{ district.name }}</a></td>
+                        <td><a href="{% url 'detail_sensor' sensor.id %}">{{ sensor.name }}</a></td>
                         <td>
-                            <a href="{% url 'update_district' district.id %}" class="btn btn-info">Update</a>
-                            <a href="{% url "delete_district" district.id %}" class="btn btn-danger">Delete</a>
+                            <a href="{% url 'update_sensor' sensor.id %}" class="btn btn-info">Update</a>
+                            <a href="{% url "delete_sensor" sensor.id %}" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                 {% endfor %}

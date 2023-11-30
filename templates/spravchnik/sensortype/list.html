@@ -48,10 +48,10 @@
                 {% for sensortype in sensortypes %}
                     <tr>
                         <th scope="row">{{ forloop.counter }}</th>
-                        <td><a href="{% url 'detail_category' sensortype.id %}">{{ sensortype.name }}</a></td>
+                        <td><a href="{% url 'detail_sensortype' sensortype.id %}">{{ sensortype.name }}</a></td>
                         <td>
-                            <a href="{% url 'update_category' sensortype.id %}" class="btn btn-info">Update</a>
-                            <a href="{% url "delete_category" sensortype.id %}" class="btn btn-danger">Delete</a>
+                            <a href="{% url 'update_sensortype' sensortype.id %}" class="btn btn-info">Update</a>
+                            <a href="{% url "delete_sensortype" sensortype.id %}" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                 {% endfor %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container p-2">
+        <p>Employe firstname: {{ employee.first_name }}</p>
+        <p>Employe lastname: {{ employee.last_name }}</p>
+        <p>Employee  surname: {{ employee.surname }}</p>
+        <p>Employee position: {{ employee.position }}</p>
+        <p>Employee birthday: {{ employee.birthday }}</p>
+        <p>Employee place of birth: {{ employee.place_of_birth }}</p>
+        <p>Employee passport data: {{ employee.pasport_data }}</p>
+    </div>
+{% endblock %}

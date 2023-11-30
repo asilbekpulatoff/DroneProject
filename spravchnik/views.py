@@ -4,6 +4,7 @@ from spravchnik.forms import BrandModelForm
 from spravchnik.models import Brand
 
 def index(request):
+    
     search = request.GET.get('search')
 
     if search is not None:

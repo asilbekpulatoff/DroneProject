@@ -12,6 +12,7 @@ class ListSensortype(ListView):
     context_object_name = 'sensortypes'
 
     def get_queryset(self):
+        
         order = self.request.GET.get('order')
         if order is not None:
             if order == 'asc':

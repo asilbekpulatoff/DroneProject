@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container p-2">
+        <p>object category: {{ object.category }}</p>
+        <p>object name: {{object.name }}</p>
+        <p>object level: {{ object.level }}</p>
+        <p>object region: {{ object.region }}</p>
+        <p>object district: {{ object.district }}</p>
+        <p>object address: {{ object.address }}</p>
+        <p>object latitude: {{ object.latitude }}</p>
+        <p>object longitude: {{ object.longitude }}</p>
+    </div>
+{% endblock %}

@@ -4,9 +4,9 @@
     <div class="container p-2">
         <form method="post">
             {% csrf_token %}
-            <p>Are you sure want to delete "{{ region.name }}"</p>
+            <p>Are you sure want to delete "{{ object.name }}"</p>
             <p>This action can't be undone</p>
-            <a href="{% url 'region' %}" class="btn btn-secondary">Back</a>
+            <a href="{% url 'object' %}" class="btn btn-secondary">Back</a>
             <input type="submit" class="btn btn-danger" value="Confirm">
         </form>
     </div>
