@@ -9,7 +9,38 @@
         a {
             text-decoration: none;
         }
+            .pagination {
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+            }
+        
+            .pagination li {
+                list-style: none;
+                margin: 0 5px;
+            }
+        
+            .pagination a,
+            .pagination span {
+                display: inline-block;
+                padding: 8px 12px;
+                text-decoration: none;
+                color: #fff;
+                background-color: #28a745; /* Yashil rang */
+                border-radius: 4px;
+            }
+        
+            .pagination .disabled span,
+            .pagination .active span {
+                background-color: #6c757d; /* Bo'sh rang */
+                cursor: not-allowed;
+            }
+        
+            .pagination .active a {
+                pointer-events: none;
+            }
     </style>
+
 {% endblock %}
 
 
@@ -55,10 +86,34 @@
                         </td>
                     </tr>
                 {% endfor %}
-
             {% endif %}
             </tbody>
         </table>
+        <div>
+            <ul class="pagination">
+            {% if brands.has_other_pages %}
+
+                {% if brands.has_previous %}
+                    <li><a href="?page={{ brands.previous_page_number }}">&laquo;</a></li>
+                {% else %}
+                    <li class="disabled"><span>&laquo;</span></li>
+                {% endif %}
+                {% for i in brands.paginator.page_range %}
+                    {% if brands.number == i %}
+                        <li class="active"><span>{{ i }} </span></li>
+                    {% else %}
+                        <li><a href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if brands.has_next %}
+                    <li><a href="?page={{ brands.next_page_number }}">&raquo;</a></li>
+                {% else %}
+                    <li class="disabled"><span>&raquo;</span></li>
+                {% endif %}
+            {% endif %}
+
+            </ul>
+        </div>
     </div>
 
 {% endblock %}

@@ -4,6 +4,7 @@ from django.views.generic import DeleteView, ListView, CreateView, UpdateView, D
 
 from spravchnik.forms import BrandModelForm
 from spravchnik.models import Brand
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 class ListBrand(ListView):
@@ -21,12 +22,27 @@ class ListBrand(ListView):
         return Brand.objects.all()
 
     def get_context_data(self, **kwargs):
+        brand_list = Brand.objects.all()
         context = super(ListBrand, self).get_context_data(**kwargs)
         search = self.request.GET.get('search')
+        page = self.request.GET.get('page', 1)
 
         if search is not None:
             brand_filter = Brand.objects.filter(name__startswith=search)
             context['brand_filter'] = brand_filter
+
+
+        paginator = Paginator(brand_list, 2)
+        try:
+            brands = paginator.page(page)
+            context['brands'] = brands
+
+        except PageNotAnInteger:
+            brands = paginator.page(1)
+            context['brands'] = brands
+        except EmptyPage:
+            brands = paginator.page(paginator.num_pages)
+            context['brands'] = brands
 
         return context
 
