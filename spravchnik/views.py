@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from spravchnik.forms import BrandModelForm
 from spravchnik.models import Brand
 
+
 def index(request):
     
     search = request.GET.get('search')
@@ -42,3 +43,5 @@ def update_brand(request, pk):
     else:
         form = BrandModelForm(instance=brand)
         return render(request, 'spravchnik/update_brand.html', {"form": form, "brand": brand})
+
+

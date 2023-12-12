@@ -8,6 +8,10 @@ from spravchnik.views.view_class.manufacture import ListManufacturer, DeleteManu
 from spravchnik.views.view_class.position import ListPosition, DetailPosition, DeletePosition, UpdatePosition, CreatePosition
 from spravchnik.views.view_class.sensortype import ListSensortype, DetailSensortype, DeleteSensortype, CreateSensortype, UpdateSensortype
 from spravchnik.views.view_class.district import ListDistrict, DetailDistrict, DeleteDistrict, CreateDistrict, UpdateDistrict
+
+from spravchnik.views.view_def.district import export_district
+from spravchnik.views.view_def.brand import export_brand
+
 # from spravchnik.views import index, delete_brand, create_brand, update_brand
 
 urlpatterns = [
@@ -59,4 +63,6 @@ urlpatterns = [
     path('district/<int:pk>/delete/', DeleteDistrict.as_view(), name='delete_district'),
     path('district/<int:pk>/', DetailDistrict.as_view(), name='detail_district'),
 
+    path('export_brand/', export_brand, name='export_brand'),
+    path('export_district/', export_district, name='export_district')
 ]
